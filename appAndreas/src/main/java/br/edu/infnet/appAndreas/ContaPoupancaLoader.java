@@ -7,16 +7,16 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appAndreas.model.domain.Agencia;
+import br.edu.infnet.appAndreas.model.domain.ContaPoupanca;
 
 @Component
-public class AgenciaLoader implements ApplicationRunner {
+public class ContaPoupancaLoader implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		// TODO Auto-generated method stub
 
-		FileReader file = new FileReader("files/agencia.txt");
+		FileReader file = new FileReader("files/contapoupanca.txt");
 		BufferedReader leitura = new BufferedReader(file);
 
 		String linha = leitura.readLine();
@@ -25,11 +25,11 @@ public class AgenciaLoader implements ApplicationRunner {
 		while (linha != null) {
 			campos = linha.split(";");
 
-			Agencia agencia = new Agencia();
-			agencia.setCodigo(campos[0]);
-			agencia.setNome(campos[1]);
+			ContaPoupanca contaPoupanca = new ContaPoupanca();
+			contaPoupanca.setNumero(campos[0]);
+			contaPoupanca.setSaldo(Float.valueOf(campos[1]));
 
-			System.out.println("AGENCIA" + agencia);
+			System.out.println("CONTA POUPANCA" + contaPoupanca);
 
 			linha = leitura.readLine();
 		}

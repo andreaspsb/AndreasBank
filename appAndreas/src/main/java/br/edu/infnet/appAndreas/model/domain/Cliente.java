@@ -1,9 +1,13 @@
 package br.edu.infnet.appAndreas.model.domain;
 
+import java.util.List;
+
 public class Cliente {
 	
 	private String cpf;
 	private String nome;
+	
+	private List<Conta> contas;
 	
 	
 	@Override
@@ -22,5 +26,13 @@ public class Cliente {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<Conta> getContas() {
+		return contas;
+	}
+
+	public void setContas(List<Conta> contas) {
+		this.contas = contas;
 	}
 }

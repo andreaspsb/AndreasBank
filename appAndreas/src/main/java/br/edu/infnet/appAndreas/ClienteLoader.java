@@ -16,7 +16,7 @@ public class ClienteLoader implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		// TODO Auto-generated method stub
 
-		FileReader file = new FileReader("agencia.txt");
+		FileReader file = new FileReader("files/cliente.txt");
 		BufferedReader leitura = new BufferedReader(file);
 
 		String linha = leitura.readLine();
