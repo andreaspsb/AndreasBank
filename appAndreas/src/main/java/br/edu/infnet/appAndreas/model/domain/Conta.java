@@ -3,11 +3,11 @@ package br.edu.infnet.appAndreas.model.domain;
 public abstract class Conta {
 	private String numero;
 	private float saldo;
+	private boolean isAtivo;
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return String.format("%s;%.2f;%s", numero, saldo, isAtivo ? "ativo=sim" : "ativo=não");
 	}
 
 	public String getNumero() {
@@ -24,6 +24,14 @@ public abstract class Conta {
 
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
+	}
+
+	public boolean isAtivo() {
+		return isAtivo;
+	}
+
+	public void setAtivo(boolean isAtivo) {
+		this.isAtivo = isAtivo;
 	}
 
 	

@@ -28,6 +28,9 @@ public class ContaPoupancaLoader implements ApplicationRunner {
 			ContaPoupanca contaPoupanca = new ContaPoupanca();
 			contaPoupanca.setNumero(campos[0]);
 			contaPoupanca.setSaldo(Float.valueOf(campos[1]));
+			contaPoupanca.setAtivo(Boolean.valueOf(campos[2]));
+			contaPoupanca.setDiaAniversario(Integer.valueOf(campos[3]));
+			contaPoupanca.setTaxaRendimento(Float.valueOf(campos[4]));
 
 			System.out.println("CONTA POUPANCA" + contaPoupanca);
 

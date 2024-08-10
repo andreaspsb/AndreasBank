@@ -7,11 +7,10 @@ public class Agencia {
 	private String nome;
 
 	private List<Conta> contas;
-	
+
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return String.format("%s;%s", codigo, nome);
 	}
 
 	public String getCodigo() {

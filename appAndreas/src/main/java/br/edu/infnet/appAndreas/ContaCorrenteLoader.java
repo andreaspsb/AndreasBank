@@ -28,6 +28,9 @@ public class ContaCorrenteLoader implements ApplicationRunner {
 			ContaCorrente contaCorrente = new ContaCorrente();
 			contaCorrente.setNumero(campos[0]);
 			contaCorrente.setSaldo(Float.valueOf(campos[1]));
+			contaCorrente.setAtivo(Boolean.valueOf(campos[2]));
+			contaCorrente.setLimite(Float.valueOf(campos[3]));
+			contaCorrente.setTaxaManutencao(Float.valueOf(campos[4]));
 
 			System.out.println("CONTA CORRENTE" + contaCorrente);
 
