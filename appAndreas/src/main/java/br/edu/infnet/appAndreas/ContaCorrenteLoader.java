@@ -3,18 +3,22 @@ package br.edu.infnet.appAndreas;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appAndreas.model.domain.ContaCorrente;
+import br.edu.infnet.appAndreas.model.service.ContaCorrenteService;
 
 @Component
 public class ContaCorrenteLoader implements ApplicationRunner {
 
+	@Autowired
+	private ContaCorrenteService contaCorrenteService;
+
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
 
 		FileReader file = new FileReader("files/contacorrente.txt");
 		BufferedReader leitura = new BufferedReader(file);
@@ -32,9 +36,13 @@ public class ContaCorrenteLoader implements ApplicationRunner {
 			contaCorrente.setLimite(Float.valueOf(campos[3]));
 			contaCorrente.setTaxaManutencao(Float.valueOf(campos[4]));
 
-			System.out.println("CONTA CORRENTE" + contaCorrente);
+			contaCorrenteService.incluir(contaCorrente);
 
 			linha = leitura.readLine();
+		}
+
+		for (ContaCorrente c : contaCorrenteService.obterLista()) {
+			System.out.println("[CONTA CORRENTE]" + c);
 		}
 
 		leitura.close();

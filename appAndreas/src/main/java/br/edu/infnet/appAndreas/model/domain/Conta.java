@@ -1,13 +1,24 @@
 package br.edu.infnet.appAndreas.model.domain;
 
 public abstract class Conta {
+
+	private Integer id;
+
 	private String numero;
 	private float saldo;
 	private boolean isAtivo;
-	
+
 	@Override
 	public String toString() {
-		return String.format("%s;%.2f;%s", numero, saldo, isAtivo ? "ativo=sim" : "ativo=não");
+		return String.format("%d;%s;%.2f;%s", id, numero, saldo, isAtivo ? "ativo=sim" : "ativo=não");
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNumero() {
@@ -34,5 +45,4 @@ public abstract class Conta {
 		this.isAtivo = isAtivo;
 	}
 
-	
 }

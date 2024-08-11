@@ -1,16 +1,32 @@
 package br.edu.infnet.appAndreas.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Agencia {
+
+	private Integer id;
+
 	private String codigo;
 	private String nome;
 
 	private List<Conta> contas;
 
+	public Agencia() {
+		contas = new ArrayList<Conta>();
+	}
+
 	@Override
 	public String toString() {
-		return String.format("%s;%s", codigo, nome);
+		return String.format("%d;%s;%s;%d;%s", id, codigo, nome, contas.size(), contas);
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getCodigo() {

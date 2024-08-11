@@ -7,7 +7,7 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public String toString() {
-		return String.format("%s;%d;%.2f", super.toString(), diaAniversario, taxaRendimento);
+		return String.format("%s;%d;%.3f", super.toString(), diaAniversario, taxaRendimento);
 	}
 
 	public int getDiaAniversario() {
