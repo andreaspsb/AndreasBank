@@ -1,27 +1,38 @@
 package br.edu.infnet.appAndreas.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appAndreas.model.domain.Agencia;
+import br.edu.infnet.appAndreas.repository.AgenciaRepository;
 
 @Service
 public class AgenciaService {
 
-	Map<Integer, Agencia> mapa = new HashMap<Integer, Agencia>();
-	Integer id = 0;
+	@Autowired
+	private AgenciaRepository agenciaRepository;
 
 	public void incluir(Agencia agencia) {
-		agencia.setId(++id);
-
-		mapa.put(agencia.getId(), agencia);
+		agenciaRepository.save(agencia);
 	}
 
-	public Collection<Agencia> obterLista() {
-		return mapa.values();
+	public Iterable<Agencia> obterLista() {
+		return agenciaRepository.findAll();
 	}
 
+	public Agencia obterPorId(Integer id) {
+		return agenciaRepository.findById(id).orElse(null);
+	}
+
+	public void excluir(Integer id) {
+		agenciaRepository.deleteById(id);
+	}
+
+	public long obterQtde() {
+		return agenciaRepository.count();
+	}
+
+	public Agencia obterPorCodigo(String codigo) {
+		return agenciaRepository.findByCodigo(codigo);
+	}
 }

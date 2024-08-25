@@ -1,27 +1,34 @@
 package br.edu.infnet.appAndreas.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appAndreas.model.domain.ContaPoupanca;
+import br.edu.infnet.appAndreas.repository.ContaPoupancaRepository;
 
 @Service
 public class ContaPoupancaService {
 
-	Map<Integer, ContaPoupanca> mapa = new HashMap<Integer, ContaPoupanca>();
-	Integer id = 0;
+	@Autowired
+	private ContaPoupancaRepository contaPoupancaRepository;
 
 	public void incluir(ContaPoupanca contaPoupanca) {
-		contaPoupanca.setId(++id);
-
-		mapa.put(contaPoupanca.getId(), contaPoupanca);
+		contaPoupancaRepository.save(contaPoupanca);
 	}
 
-	public Collection<ContaPoupanca> obterLista() {
-		return mapa.values();
+	public Iterable<ContaPoupanca> obterLista() {
+		return contaPoupancaRepository.findAll();
 	}
 
+	public ContaPoupanca obterPorId(Integer id) {
+		return contaPoupancaRepository.findById(id).orElse(null);
+	}
+
+	public void excluir(Integer id) {
+		contaPoupancaRepository.deleteById(id);
+	}
+
+	public long obterQtde() {
+		return contaPoupancaRepository.count();
+	}
 }

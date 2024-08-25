@@ -1,5 +1,10 @@
 package br.edu.infnet.appAndreas.model.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "TContaPoupanca")
 public class ContaPoupanca extends Conta {
 
 	private int diaAniversario;

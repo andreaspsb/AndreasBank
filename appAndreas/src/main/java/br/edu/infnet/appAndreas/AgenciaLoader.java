@@ -6,14 +6,17 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appAndreas.model.domain.Agencia;
 import br.edu.infnet.appAndreas.model.domain.ContaCorrente;
 import br.edu.infnet.appAndreas.model.domain.ContaPoupanca;
+import br.edu.infnet.appAndreas.model.domain.Endereco;
 import br.edu.infnet.appAndreas.model.service.AgenciaService;
 
 @Component
+@Order(1)
 public class AgenciaLoader implements ApplicationRunner {
 
 	@Autowired
@@ -38,6 +41,15 @@ public class AgenciaLoader implements ApplicationRunner {
 				agencia = new Agencia();
 				agencia.setCodigo(campos[1]);
 				agencia.setNome(campos[2]);
+
+				Endereco endereco = new Endereco();
+				//endereco.setCep(campos[3]);
+				//endereco.setLogradouro(campos[4]);
+				//endereco.setComplemento(campos[5]);
+				//endereco.setBairro(campos[6]);
+				//endereco.setLocalidade(campos[7]);
+				//endereco.setUf(campos[8]);
+				agencia.setEndereco(endereco);
 
 				agenciaService.incluir(agencia);
 

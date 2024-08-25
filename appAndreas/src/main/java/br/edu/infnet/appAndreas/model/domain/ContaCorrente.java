@@ -1,5 +1,10 @@
 package br.edu.infnet.appAndreas.model.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "TContaCorrente")
 public class ContaCorrente extends Conta {
 
 	private float limite;

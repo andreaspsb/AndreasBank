@@ -6,6 +6,7 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appAndreas.model.domain.Cliente;
@@ -14,6 +15,7 @@ import br.edu.infnet.appAndreas.model.domain.ContaPoupanca;
 import br.edu.infnet.appAndreas.model.service.ClienteService;
 
 @Component
+@Order(2)
 public class ClienteLoader implements ApplicationRunner {
 
 	@Autowired
